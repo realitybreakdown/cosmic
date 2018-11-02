@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 var methodOverride = require('method-override');
+
 require('dotenv').config();
 
 require('./config/database');
