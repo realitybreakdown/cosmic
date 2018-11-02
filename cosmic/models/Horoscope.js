@@ -1,14 +1,18 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var commentSchema = require('./commentSchema');
+
 
 var horoscopeSchema = new Schema ({
-    sign: [{type: Schema.Types.ObjectId, ref: 'User'}],
+    sign: {
+        type: String,
+        enum: ['Capricorn', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius']
+    },
     prediction: {
         type: String,
         // rendered by api
     }, 
-    comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
-    favorites: [{type: Schema.Types.ObjectId, ref: 'Favorite'}]
+    comments: [commentSchema]
 }, {
     timestamps: true
 });
