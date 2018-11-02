@@ -36,6 +36,14 @@ h1 {
   text-align: center;
 }
 
+.signs {
+  display: flex;
+  flex-wrap: wrap;
+}
+.signs img {
+  width: 160px;
+}
+
 .sign-period {
   list-style-type: none;
   display: inline-flex;
