@@ -3,8 +3,13 @@ var Schema = mongoose.Schema;
 
 var accuracySchema = new Schema ({
     predictions: [{type: Schema.Types.ObjectId, ref: 'Horoscope'}],
-    accuracy: Boolean
+    accuracy: {
+        type: Boolean,
+        default: true
+    }
 });
+
+var commentSchema = require('./commentSchema');
 
 var userSchema = new Schema ({
     name: {
@@ -18,12 +23,11 @@ var userSchema = new Schema ({
         enum: ['Capricorn', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius']
     },
     googleId: String, 
-    comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
-    favorites: [{type: Schema.Types.ObjectId, ref: 'Favorite'}],
+    comments: [commentSchema],
+    favorites: [{type: Schema.Types.ObjectId, ref: 'Horoscope'}],
     prediction: [accuracySchema]
 }, {
     timestamps: true
 });
 
 module.exports = mongoose.model('User', userSchema);
-module.exports = mongoose.model('Accuracy', accuracySchema);
