@@ -14,8 +14,15 @@
         <nav class="nav-bar">
             <ul class="main-nav">
                 <li><a href="/" class="logo">Cosmic</a></li>
-                <li><a href="/">Log in</a></li>
-                <li><a href="/">Sign up</a></li>
+                <% if (user) { %>
+                    <li><a href="/logout">
+                        Logout
+                    </a></li>
+                <% } else { %>
+                    <li><a href="/auth/google">
+                        Login with Google
+                    </a></li>
+                <% } %>
             </ul>
         </nav>
     </header>
