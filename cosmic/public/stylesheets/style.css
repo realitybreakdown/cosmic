@@ -1,8 +1,50 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: 'Jim Nightshade', cursive;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: url("https://i.imgur.com/QQEiYIt.gif");
+  color: white;
+  height: 50px;
 }
 
 a {
-  color: #00B7FF;
+  color: #8f1384;
+}
+
+.main-nav {
+  font-size: 25px;
+  display: flex;
+  list-style: none;
+}
+
+.main-nav li:first-child {
+  margin-right: auto;
+ }
+
+.main-nav a {
+  margin: 10px;
+  border-radius: 5px;
+  color: #fff;
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+}
+
+
+
+.sign-period {
+  list-style-type: none;
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.sign-period li {
+  padding-right: 15px;
 }
