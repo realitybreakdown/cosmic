@@ -15,6 +15,5 @@ var horoscopeSchema = new Schema ({
 
 
 
-
-
+ 
 module.exports = mongoose.model('Horoscope', horoscopeSchema);
