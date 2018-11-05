@@ -1,20 +1,36 @@
 <%- include('./partials/header') %>
-<% user._id %>
+
 <h2><%= user.name %></h2>
 
 <p>Member Since: INSERT DATA</p>
 
 <img src="/img/<%= signData.sunsign %>.png" alt="<%= signData.sunsign %>">
 
+
+<% if (user.avatar) { %>
+  <img src="<%= user.avatar %>"  class="circle responsive-img">&nbsp;&nbsp;
+<% } else { %>
+  <img src="img/<%= signData.sunsign %>.png" alt="<%= signData.sunsign %>">
+<% } %>
+
 <p>Accuracy: INSERT DATA</p>
-
-<%% if (user.avatar) { %%>
-    <img src="<%%= user.avatar %%>"  class="circle responsive-img">&nbsp;&nbsp;
-  <%% } else { %%>
-    <img src="/img/<%= signData.sunsign %>.png" alt="<%= signData.sunsign %>">
-  <%% } %%>
-
-
+    
+<form action="">
+  <select name="sign">
+    <option value="Capricorn" <%= user.sign === 'Capricorn' ? 'selected' : '' %>>Capricorn</option>
+    <option value="Aquarius" <%= user.sign === 'Aquarius' ? 'selected' : '' %>>Aquarius</option>
+    <option value="Pisces" <%= user.sign === 'Pisces' ? 'selected' : '' %>>Pisces</option>
+    <option value="Aries" <%= user.sign === 'Aries' ? 'selected' : '' %>>Aries</option>
+    <option value="Taurus" <%= user.sign === 'Taurus' ? 'selected' : '' %>>Taurus</option>
+    <option value="Gemini" <%= user.sign === 'Gemini' ? 'selected' : '' %>>Gemini</option>
+    <option value="Cancer" <%= user.sign === 'Cancer' ? 'selected' : '' %>>Cancer</option>
+    <option value="Leo" <%= user.sign === 'Leo' ? 'selected' : '' %>>Leo</option>
+    <option value="Virgo" <%= user.sign === 'Virgo' ? 'selected' : '' %>>Virgo</option>
+    <option value="Libra" <%= user.sign === 'Libra' ? 'selected' : '' %>>Libra</option>
+    <option value="Scorpio" <%= user.sign === 'Scorpio' ? 'selected' : '' %>>Scorpio</option>
+    <option value="Sagittarius" <%= user.sign === 'Sagittarius' ? 'selected' : '' %>>Sagittarius</option>
+  </select>
+</form>
 
 
 
