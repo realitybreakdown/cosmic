@@ -31,33 +31,7 @@ router.get('/logout', function(req, res){
 
 router.get('/horoscope/today/:sid', controller.signDetails);
 
-// router.get('/horoscope/week/:sid', function(req, res) {
-//   request(
-//     `${rootURL}week/${req.body.sign}`,
-//     function(err, response, body) {
-//       res.render('/show');
-//     }
-//   );
-// });
-
-// router.get('/horoscope/month/:sid', function(req, res) {
-//   request(
-//     `${rootURL}month/${req.body.sign}`,
-//     function(err, response, body) {
-//       res.render('/show');
-//     }
-//   );
-// });
-
-// router.get('/horoscope/year/:sid', function(req, res) {
-//   request(
-//     `${rootURL}year/${req.body.sign}`,
-//     function(err, response, body) {
-//       res.render('/show');
-//     }
-//   );
-// });
-
+router.get('/profile/:uid', controller.userPage);
 
 
 
