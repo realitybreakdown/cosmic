@@ -10,7 +10,11 @@ body {
 }
 
 a {
-  color: #8f1384;
+  color: white;
+}
+
+a:hover {
+  color: #12cd4c; 
 }
 
 .main-nav {
@@ -34,12 +38,18 @@ a {
 
 h1 {
   text-align: center;
+  font-size: 60px;
+}
+
+h2 {
+  font-size: 50px;
 }
 
 .signs {
   display: flex;
   flex-wrap: wrap;
 }
+
 .signs img {
   width: 160px;
 }
@@ -49,8 +59,18 @@ h1 {
   display: inline-flex;
   justify-content: center;
   width: 100%;
+  font-size: 40px;
 }
 
 .sign-period li {
   padding-right: 15px;
+}
+
+.prediction {
+  display: inline-flex;
+}
+
+.prediction p {
+  font-size: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
