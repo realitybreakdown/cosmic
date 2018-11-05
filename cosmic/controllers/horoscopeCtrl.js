@@ -12,12 +12,10 @@ module.exports = {
     },
 
     userPage: function(req, res, next) {
-        request(`${rootURL}today/${req.params.uid}`, function(err, response, body) {
-            User.findById(req.params.uid, function(err, user) {
-                if (err) return next(err);
-                res.render('profile', {user: req.params.uid, signData: JSON.parse(body)});
-            })
-        });
+        // request(`${rootURL}today/${req.user.sign}`, function(err, response, body) {
+            // if (err) return next(err);
+            res.render('profile', {user: req.user /*, signData: JSON.parse(body)*/});
+        // });
     }
 }
 

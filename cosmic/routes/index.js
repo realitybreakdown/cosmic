@@ -31,7 +31,7 @@ router.get('/logout', function(req, res){
 
 router.get('/horoscope/today/:sid', controller.signDetails);
 
-router.get('/profile/:uid', controller.userPage);
+router.get('/profile', controller.userPage);
 
 
 
