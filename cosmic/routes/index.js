@@ -10,29 +10,25 @@ const rootURL = 'http://horoscope-api.herokuapp.com/horoscope/';
 router.get('/', function(req, res) {
   res.render('index', { user: req.user });
 });
+router.get('/horoscope/today/:sid', controller.signDetails);
+router.get('/profile', controller.userPage);
+router.post('/profile', controller.addSign);
 
 router.get('/auth/google', passport.authenticate(
   'google',
   { scope: ['profile', 'email'] }
 ));
-
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect : '/',
+    successRedirect : '/profile',
     failureRedirect : '/'
   }
 ));
-
 router.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
-
-router.get('/horoscope/today/:sid', controller.signDetails);
-
-router.get('/profile', controller.userPage);
-
 
 
 module.exports = router;

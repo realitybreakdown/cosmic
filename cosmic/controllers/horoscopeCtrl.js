@@ -16,6 +16,14 @@ module.exports = {
             // if (err) return next(err);
             res.render('profile', {user: req.user /*, signData: JSON.parse(body)*/});
         // });
-    }
-}
+    },
 
+    addSign: function(req, res) {
+        var user = new User(req.body);
+        user.save(function(err) {
+            if (err) return res.render('profile');
+            console.log(sign);
+            res.redirect('/profile');
+        });
+    },
+}
