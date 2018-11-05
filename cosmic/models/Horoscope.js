@@ -8,6 +8,10 @@ var horoscopeSchema = new Schema ({
         type: String,
         enum: ['Capricorn', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius']
     },
+    timeframe: {
+        type: String,
+        enum: ["todays", "weekly", "yearly", "monthly"]
+    },
     prediction: {
         type: String,
         // rendered by api
