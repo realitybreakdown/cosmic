@@ -23,6 +23,7 @@ var userSchema = new Schema ({
         enum: ['Capricorn', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius']
     },
     googleId: String, 
+    avatar: String,
     comments: [commentSchema],
     favorites: [{type: Schema.Types.ObjectId, ref: 'Horoscope'}],
     prediction: [accuracySchema]

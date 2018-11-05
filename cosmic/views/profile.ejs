@@ -1,0 +1,38 @@
+<%- include('./partials/header') %>
+<% user._id %>
+<h2><%= user.name %></h2>
+
+<p>Member Since: INSERT DATA</p>
+
+<img src="/img/<%= signData.sunsign %>.png" alt="<%= signData.sunsign %>">
+
+<p>Accuracy: INSERT DATA</p>
+
+<%% if (user.avatar) { %%>
+    <img src="<%%= user.avatar %%>"  class="circle responsive-img">&nbsp;&nbsp;
+  <%% } else { %%>
+    <img src="/img/<%= signData.sunsign %>.png" alt="<%= signData.sunsign %>">
+  <%% } %%>
+
+
+
+
+
+
+<!-- name:
+member since
+sign
+accuracy
+user png
+
+
+favorites (forEach) -->
+
+
+
+
+
+
+
+
+<%- include('./partials/footer') %>
