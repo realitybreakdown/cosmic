@@ -15,6 +15,9 @@
             <ul class="main-nav">
                 <li><a href="/" class="logo">Cosmic</a></li>
                 <% if (user) { %>
+                    <li><a href="/profile/<%= user._id %>">
+                        Hello, <%= user.name %>
+                    </a></li>
                     <li><a href="/logout">
                         Logout
                     </a></li>
