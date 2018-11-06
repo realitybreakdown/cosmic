@@ -33,10 +33,19 @@
         </form>
         <h3>Today</h3>
         <p><%= signData.horoscope %></p>
+        <form method="POST" action="/profile/favorites">
+          <input type="submit" value="addfavorite" id="like"><img src="/img/star_favorite.png">
+        </form>
+
     </div>
   </section>
   <section>
   <h3>Horoscope Favorites</h3>
   <h5>The predictions you can't get enough of.</h5>
+  <div>
+    <% user.favorites.forEach(function(favorite) {  %>
+        <p> <%= signData.horoscope %> </p>
+    <% }); %>
+</div>
 
 </section>
