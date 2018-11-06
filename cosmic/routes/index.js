@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 router.get('/horoscope/today/:sid', controller.signDetails);
 router.get('/profile', controller.userPage);
 router.post('/profile', controller.addSign);
-router.post('/profile/favorites', controller.addFavorite);
+router.post('/favorites/:date', controller.addFavorite);
 
 router.get('/auth/google', passport.authenticate(
   'google',

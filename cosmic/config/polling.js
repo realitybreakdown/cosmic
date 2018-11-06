@@ -17,7 +17,7 @@ async function getHoroscopes() {
         var prediction = new Horoscope({
             date: h.date,
             prediction: h.horoscope,
-            signs: h.sunsign
+            sign: h.sunsign
         });
         prediction.save();
     }
