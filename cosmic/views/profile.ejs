@@ -1,5 +1,6 @@
 <%- include('./partials/header') %>
 
+
 <section class="prediction">
     <div>
         <% if (user.avatar) { %>
@@ -31,11 +32,10 @@
           <input type="submit" value="Add Sign">
         </form>
     </div>
+    <p><%= signData.horoscope %></p>
 </section>
 <section>
   <h3>Horoscope Favorites</h3>
   <h5>The predictions you can't get enough of.</h5>
 
 </section>
-
-<%- include('./partials/footer') %>
