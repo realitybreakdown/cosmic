@@ -15,7 +15,10 @@ module.exports = {
     userPage: function(req, res, next) {
         request(`${rootURL}today/${req.user.sign}`, function(err, response, body) {
             if (err) return next(err);
-            res.render('profile', {user: req.user, signData: JSON.parse(body)});
+            var signData = JSON.parse(body);
+            Horoscope.findOne({date: signData.date, sign: req.user.sign}, function(err, horoscope) {
+                res.render('profile', {user: req.user, signData, favorited: horoscope});
+            });
         });
     },
 
@@ -27,15 +30,15 @@ module.exports = {
     },
 
     addFavorite: function(req, res, next) {
-        request(`${rootURL}today/${req.user.sign}`, function(err, response, body) {
-            req.user.signData.horoscope.push(req.user.favorites);
-            req.user.save(function(err) {
-                favorite.signData.horoscope.push();
-                favorite.save(function(err) {
-                    if(err) return next(err);
-                    res.redirect('/profile/favorites', {user: req.user, signData: JSON.parse(body)});
+        Horoscope.findOne({date: req.params.date, sign: req.user.sign}, function(err, horoscope) {
+            if (req.user.favorites.some(f => f._id.equals(horoscope._id))) {
+                res.redirect('/profile');
+            } else {
+                req.user.favorites.push(horoscope._id);
+                req.user.save(function() {
+                    res.redirect('/profile');
                 });
-            });
+            }
         });
     },
 }
