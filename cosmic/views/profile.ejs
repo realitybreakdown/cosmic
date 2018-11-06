@@ -2,20 +2,20 @@
 
 <h2><%= user.name %></h2>
 
-<p>Member Since: INSERT DATA</p>
+<p>Member Since: <%= user.createdAt %></p>
 
-<img src="/img/<%= signData.sunsign %>.png" alt="<%= signData.sunsign %>">
+<img src="/img/<%= user.sign %>.png">
 
 
 <% if (user.avatar) { %>
-  <img src="<%= user.avatar %>"  class="circle responsive-img">&nbsp;&nbsp;
+  <img src="<%= user.avatar %>">&nbsp;&nbsp;
 <% } else { %>
-  <img src="img/<%= signData.sunsign %>.png" alt="<%= signData.sunsign %>">
+  <img src="img/<%= user.sign %>.png">
 <% } %>
 
-<p>Accuracy: INSERT DATA</p>
+<p>Accuracy: <%= user.accuracy %></p>
     
-<form action="">
+<form method="POST" action="/profile">
   <select name="sign">
     <option value="Capricorn" <%= user.sign === 'Capricorn' ? 'selected' : '' %>>Capricorn</option>
     <option value="Aquarius" <%= user.sign === 'Aquarius' ? 'selected' : '' %>>Aquarius</option>
@@ -30,25 +30,11 @@
     <option value="Scorpio" <%= user.sign === 'Scorpio' ? 'selected' : '' %>>Scorpio</option>
     <option value="Sagittarius" <%= user.sign === 'Sagittarius' ? 'selected' : '' %>>Sagittarius</option>
   </select>
+  <input type="submit" value="Add Sign">
 </form>
 
-
-
-
-<!-- name:
-member since
-sign
-accuracy
-user png
-
-
-favorites (forEach) -->
-
-
-
-
-
-
+<h3>Horoscope Favorites</h3>
+<h5>The predictions you can't get enough of.</h5>
 
 
 <%- include('./partials/footer') %>
