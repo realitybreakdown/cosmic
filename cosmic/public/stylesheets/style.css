@@ -97,6 +97,13 @@ h2 {
   width: 80px;
 }
 
+#user-avatar {
+  border-radius: 50%;
+}
+#sign-logo {
+  width: 120px;
+  margin-left: -85px;
+}
 
 @media screen and (min-width: 540px) {
   .main-signs img {
