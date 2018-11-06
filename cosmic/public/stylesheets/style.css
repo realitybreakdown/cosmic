@@ -13,6 +13,14 @@ a {
   color: white;
 }
 
+a:focus {
+  outline:none;
+}
+
+map area{
+  outline: none;
+}
+
 a:hover {
   color: #12cd4c; 
 }
@@ -21,6 +29,8 @@ a:hover {
   font-size: 25px;
   display: flex;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .main-nav li:first-child {
@@ -46,6 +56,12 @@ h2 {
   text-transform: capitalize;
 }
 
+.main-signs div {
+  text-align: center;
+}
+.main-signs img {
+  width: 360px;
+}
 .signs, .show-signs {
   display: flex;
   flex-wrap: wrap;
@@ -59,9 +75,9 @@ h2 {
 .sign-period {
   list-style-type: none;
   display: inline-flex;
-  justify-content: center;
   width: 100%;
-  font-size: 40px;
+  font-size: 30px;
+  padding: 0;
 }
 
 .sign-period li {
@@ -79,4 +95,11 @@ h2 {
 
 .show-signs img {
   width: 80px;
+}
+
+
+@media screen and (min-width: 540px) {
+  .main-signs img {
+    width: 590px;
+  }
 }
