@@ -17,7 +17,8 @@ module.exports = {
             if (err) return next(err);
             var signData = JSON.parse(body);
             Horoscope.findOne({date: signData.date, sign: req.user.sign}, function(err, horoscope) {
-                res.render('profile', {user: req.user, signData, favorited: horoscope});
+                var favorited = req.user.favorites.some(f => f._id.equals(horoscope._id));
+                res.render('profile', {user: req.user, signData, favorited});
             });
         });
     },
