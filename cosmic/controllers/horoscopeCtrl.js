@@ -12,17 +12,15 @@ module.exports = {
     },
 
     userPage: function(req, res, next) {
-        // request(`${rootURL}today/${req.user.sign}`, function(err, response, body) {
-            // if (err) return next(err);
-            res.render('profile', {user: req.user /*, signData: JSON.parse(body)*/});
-        // });
+        request(`${rootURL}today/${req.user.sign}`, function(err, response, body) {
+            if (err) return next(err);
+            res.render('profile', {user: req.user, signData: JSON.parse(body)});
+        });
     },
 
     addSign: function(req, res) {
-        var user = new User(req.body);
-        user.save(function(err) {
-            if (err) return res.render('profile');
-            console.log(sign);
+        req.user.sign = req.body.sign;
+        req.user.save(function(err) {
             res.redirect('/profile');
         });
     },
