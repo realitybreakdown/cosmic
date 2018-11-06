@@ -1,42 +1,41 @@
 <%- include('./partials/header') %>
 
-<h2><%= user.name %></h2>
 
-<p>Member Since: <%= user.createdAt %></p>
+<section class="prediction">
+    <div>
+        <% if (user.avatar) { %>
+          <img src="<%= user.avatar %>&sz=250" id="user-avatar">&nbsp;&nbsp;
+        <% } else { %>
+          <img src="https://i.imgur.com/nYZjvKS.png">
+        <% } %>
+          <img src="/img/<%= user.sign %>.png" id="sign-logo">
+    </div>
+    <div>
+        <h2><%= user.name %></h2>
+        <p>Member Since: <%= user.createdAt %></p>
+        <p>Accuracy: <%= user.accuracy %></p>
+        <form method="POST" action="/profile">
+          <select name="sign">
+            <option value="Capricorn" <%= user.sign === 'Capricorn' ? 'selected' : '' %>>Capricorn</option>
+            <option value="Aquarius" <%= user.sign === 'Aquarius' ? 'selected' : '' %>>Aquarius</option>
+            <option value="Pisces" <%= user.sign === 'Pisces' ? 'selected' : '' %>>Pisces</option>
+            <option value="Aries" <%= user.sign === 'Aries' ? 'selected' : '' %>>Aries</option>
+            <option value="Taurus" <%= user.sign === 'Taurus' ? 'selected' : '' %>>Taurus</option>
+            <option value="Gemini" <%= user.sign === 'Gemini' ? 'selected' : '' %>>Gemini</option>
+            <option value="Cancer" <%= user.sign === 'Cancer' ? 'selected' : '' %>>Cancer</option>
+            <option value="Leo" <%= user.sign === 'Leo' ? 'selected' : '' %>>Leo</option>
+            <option value="Virgo" <%= user.sign === 'Virgo' ? 'selected' : '' %>>Virgo</option>
+            <option value="Libra" <%= user.sign === 'Libra' ? 'selected' : '' %>>Libra</option>
+            <option value="Scorpio" <%= user.sign === 'Scorpio' ? 'selected' : '' %>>Scorpio</option>
+            <option value="Sagittarius" <%= user.sign === 'Sagittarius' ? 'selected' : '' %>>Sagittarius</option>
+          </select>
+          <input type="submit" value="Add Sign">
+        </form>
+    </div>
+    <p><%= signData.horoscope %></p>
+</section>
+<section>
+  <h3>Horoscope Favorites</h3>
+  <h5>The predictions you can't get enough of.</h5>
 
-<img src="/img/<%= user.sign %>.png">
-
-<p><%= signData.horoscope %></p>
-
-
-<% if (user.avatar) { %>
-  <img src="<%= user.avatar %>">&nbsp;&nbsp;
-<% } else { %>
-  <img src="img/<%= user.sign %>.png">
-<% } %>
-
-<p>Accuracy: <%= user.accuracy %></p>
-    
-<form method="POST" action="/profile">
-  <select name="sign">
-    <option value="Capricorn" <%= user.sign === 'Capricorn' ? 'selected' : '' %>>Capricorn</option>
-    <option value="Aquarius" <%= user.sign === 'Aquarius' ? 'selected' : '' %>>Aquarius</option>
-    <option value="Pisces" <%= user.sign === 'Pisces' ? 'selected' : '' %>>Pisces</option>
-    <option value="Aries" <%= user.sign === 'Aries' ? 'selected' : '' %>>Aries</option>
-    <option value="Taurus" <%= user.sign === 'Taurus' ? 'selected' : '' %>>Taurus</option>
-    <option value="Gemini" <%= user.sign === 'Gemini' ? 'selected' : '' %>>Gemini</option>
-    <option value="Cancer" <%= user.sign === 'Cancer' ? 'selected' : '' %>>Cancer</option>
-    <option value="Leo" <%= user.sign === 'Leo' ? 'selected' : '' %>>Leo</option>
-    <option value="Virgo" <%= user.sign === 'Virgo' ? 'selected' : '' %>>Virgo</option>
-    <option value="Libra" <%= user.sign === 'Libra' ? 'selected' : '' %>>Libra</option>
-    <option value="Scorpio" <%= user.sign === 'Scorpio' ? 'selected' : '' %>>Scorpio</option>
-    <option value="Sagittarius" <%= user.sign === 'Sagittarius' ? 'selected' : '' %>>Sagittarius</option>
-  </select>
-  <input type="submit" value="Add Sign">
-</form>
-
-<h3>Horoscope Favorites</h3>
-<h5>The predictions you can't get enough of.</h5>
-
-
-<%- include('./partials/footer') %>
+</section>
