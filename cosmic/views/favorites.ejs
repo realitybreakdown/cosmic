@@ -1,0 +1,13 @@
+<%- include('./partials/header') %>
+<section>
+  <h3>Horoscope Favorites</h3>
+  <h5>The predictions you can't get enough of.</h5>
+  <div>
+    <% user.favorites.forEach(function(favorite) {  %>
+        <p> <%= signData.horoscope %> </p>
+    <% }); %>
+  </div>
+
+</section>  
+
+<%- include('./partials/footer') %>

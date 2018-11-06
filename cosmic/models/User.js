@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var signs = require('../config/signs');
+
 var accuracySchema = new Schema ({
     predictions: [{type: Schema.Types.ObjectId, ref: 'Horoscope'}],
     accuracy: {
@@ -20,7 +22,7 @@ var userSchema = new Schema ({
     phoneNum: String,
     sign: {
         type: String,
-        enum: ['Capricorn', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius']
+        enum: signs
     },
     googleId: String, 
     avatar: String,
