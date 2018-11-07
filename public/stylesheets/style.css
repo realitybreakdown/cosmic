@@ -76,6 +76,9 @@ h3 {
   flex-wrap: wrap;
   justify-content: center;
 }
+.show-signs {
+  width: 40%;
+}
 
 .signs img {
   width: 160px;
@@ -95,6 +98,9 @@ h3 {
 
 .prediction {
   display: inline-flex;
+}
+.prediction img {
+  padding-top: -80px;
 }
 
 .prediction p {
@@ -138,12 +144,24 @@ h3 {
 }
 
 select {
-  width: 200px;
   height: 40px;
   background: none;
   color: white;
   font-size: 20px;
+  outline: none;
+  border: none;
+  border-bottom: 1px white solid;
 }
+
+.show-bottom {
+  display: flex;
+}
+
+.prediction-data {
+  padding-top: 30px;
+  padding-right: 100px;
+}
+
 @media screen and (min-width: 540px) {
   .main-signs img {
     width: 590px;
