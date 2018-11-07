@@ -2,19 +2,19 @@
 
 
 <section class="prediction">
-    <div><img src="/img/<%= signData.sunsign %>.png"></div>
+    <div><img src="/img/<%= signData.sign %>.png"></div>
     <div class="prediction-data">
-        <h2><%= signData.sunsign %></h2>
-        <p><%= signData.horoscope %></p>
+        <h2><%= signData.sign %></h2>
+        <p><%= signData.prediction %></p>
         <div>
-            <% if (user.sign === signData.sunsign) { %>
+            <% if (user.sign === signData.sign) { %>
                 <button id="like">👍</button> &nbsp;&nbsp;
             <% } %>
         </div>
         <ul class="sign-period">
-            <li><a href="/horoscope/week/<%= signData.sunsign %>">Weekly</a></li>
-            <li><a href="/horoscope/month/<%= signData.sunsign %>">Monthly</a></li>
-            <li><a href="/horoscope/year/<%= signData.sunsign %>">Yearly</a></li>
+            <li><a href="/horoscope/week/<%= signData.sign %>">Weekly</a></li>
+            <li><a href="/horoscope/month/<%= signData.sign %>">Monthly</a></li>
+            <li><a href="/horoscope/year/<%= signData.sign %>">Yearly</a></li>
         </ul>
     </div>
 </section>
@@ -36,14 +36,18 @@
     </div>
     <div>
         <h3>Add a comment to this Horoscope</h3>
-        <form method="POST" action="/horoscope/<%= signData.date %>/<%= signData.sunsign %>/comments">
+        <form method="POST" action="/horoscope/<%= signData.date %>/<%= signData.sign %>/comments">
             <input type="text" name="content" placeholder="Enter a comment">
             <br>
             <br>
             <input type="submit" value="Add Comment">
         </form>
         <h3>Comments:</h3>
-        <p>This is where the comments are posted.</p>
+        <% signData.comments.forEach(function(comment) { %>
+            <p><%= comment.content %></p>
+            
+        <% }); %>
+        
     </div>    
     
 </section>
