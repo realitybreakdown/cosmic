@@ -52,8 +52,13 @@
             <input type="submit" value="Add Comment">
         </form>
         <h3>Comments:</h3>
-        <p>This is where the comments are posted.</p>
-    </div>  
+        <% signData.comments.forEach(function(comment) { %>
+            <p><%= comment.content %></p>
+            
+        <% }); %>
+        
+    </div>    
+    
 </section>
     
     <%- include('./partials/footer') %>
