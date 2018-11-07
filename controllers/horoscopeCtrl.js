@@ -17,19 +17,28 @@ module.exports = {
 
     signWeekDetails: function(req, res) {
         request(`${rootURL}week/${req.params.sid}`, function(err, response, body) {
-            res.render('show', {user: req.user, signData: JSON.parse(body)});
+            var signData = JSON.parse(body);
+            signData.sign = signData.sunsign;
+            signData.prediction = signData.horoscope;
+            res.render('show', {user: req.user, signData});
         });
     },
 
     signMonthDetails: function(req, res) {
         request(`${rootURL}month/${req.params.sid}`, function(err, response, body) {
-            res.render('show', {user: req.user, signData: JSON.parse(body)});
+            var signData = JSON.parse(body);
+            signData.sign = signData.sunsign;
+            signData.prediction = signData.horoscope;
+            res.render('show', {user: req.user, signData});
         });
     },
     
     signYearDetails: function(req, res) {
         request(`${rootURL}year/${req.params.sid}`, function(err, response, body) {
-            res.render('show', {user: req.user, signData: JSON.parse(body)});
+            var signData = JSON.parse(body);
+            signData.sign = signData.sunsign;
+            signData.prediction = signData.horoscope;
+            res.render('show', {user: req.user, signData});
         });
     },
 
