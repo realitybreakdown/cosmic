@@ -17,11 +17,7 @@
         <% } %>
 
         <p><%= signData.horoscope %></p>
-        <div>
-            <% if (user.sign === signData.sunsign) { %>
-                <button id="like">👍</button> &nbsp;&nbsp;
-            <% } %>
-        </div>
+    
         <ul class="sign-period">
             <li><a href="/horoscope/week/<%= signData.sunsign %>">Weekly</a></li>
             <li><a href="/horoscope/month/<%= signData.sunsign %>">Monthly</a></li>
