@@ -12,6 +12,24 @@ module.exports = {
         });
     },
 
+    signWeekDetails: function(req, res) {
+        request(`${rootURL}week/${req.params.sid}`, function(err, response, body) {
+            res.render('show', {user: req.user, signData: JSON.parse(body)});
+        });
+    },
+
+    signMonthDetails: function(req, res) {
+        request(`${rootURL}month/${req.params.sid}`, function(err, response, body) {
+            res.render('show', {user: req.user, signData: JSON.parse(body)});
+        });
+    },
+    
+    signYearDetails: function(req, res) {
+        request(`${rootURL}year/${req.params.sid}`, function(err, response, body) {
+            res.render('show', {user: req.user, signData: JSON.parse(body)});
+        });
+    },
+
     userPage: function(req, res, next) {
         request(`${rootURL}today/${req.user.sign}`, function(err, response, body) {
             if (err) return next(err);
