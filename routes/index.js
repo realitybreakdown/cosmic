@@ -17,6 +17,7 @@ router.get('/horoscope/month/:sid', controller.signMonthDetails);
 router.get('/horoscope/year/:sid', controller.signYearDetails);
 router.get('/profile', controller.userPage);
 router.post('/profile', controller.addSign);
+router.get('/favorites', controller.favorites);
 router.get('/favorites/:date', controller.addFavorite);
 router.get('/favorites/:hid/delete', controller.removeFavorite);
 
