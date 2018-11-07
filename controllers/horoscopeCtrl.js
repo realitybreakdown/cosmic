@@ -66,4 +66,13 @@ module.exports = {
             });
         })
     },
+
+    favorites: function(req, res, next) {
+        req.user.populate('favorites').execPopulate(function(err) {
+            if (err) return next(err);
+            res.render('favorites', { user: req.user });
+        })
+            
+        
+    }
 }

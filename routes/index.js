@@ -14,6 +14,7 @@ router.get('/', function(req, res) {
 router.get('/horoscope/today/:sid', controller.signDetails);
 router.get('/profile', controller.userPage);
 router.post('/profile', controller.addSign);
+router.get('/favorites', controller.favorites);
 router.get('/favorites/:date', controller.addFavorite);
 router.get('/favorites/:hid/delete', controller.removeFavorite);
 

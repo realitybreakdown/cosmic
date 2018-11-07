@@ -8,12 +8,13 @@
         <% } else { %>
           <img src="https://i.imgur.com/nYZjvKS.png">
         <% } %>
-          <img src="/img/<%= user.sign %>.png" id="sign-logo">
-    </div>
-    <div class="user-details">
+        <img src="/img/<%= user.sign %>.png" id="sign-logo">
+      </div>
+      <div class="user-details">
         <h2><%= user.name %></h2>
         <p>Member Since: <%= user.createdAt %></p>
         <p>Accuracy: <%= user.accuracy %></p>
+        <a href="/favorites">Check your horoscope favorites</a>
         <form method="POST" action="/profile">
           <select name="sign">
             <option value="Capricorn" <%= user.sign === 'Capricorn' ? 'selected' : '' %>>Capricorn</option>
@@ -42,13 +43,3 @@
         </div>
     </div>
   </section>
-  <section>
-  <h3>Horoscope Favorites</h3>
-  <h5>The predictions you can't get enough of.</h5>
-  <div>
-    <% user.favorites.forEach(function(favorite) {  %>
-        <p> <%= favorited %> </p>
-    <% }); %>
-</div>
-
-</section>
