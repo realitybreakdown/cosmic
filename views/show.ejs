@@ -5,6 +5,17 @@
     <div><img src="/img/<%= signData.sunsign %>.png"></div>
     <div class="prediction-data">
         <h2><%= signData.sunsign %></h2>
+
+        <% if (signData.date) { %>
+            <p>Day: <%= signData.date %></p>
+        <% } else if (signData.week) { %>
+            <p>Week: <%= signData.week %><p>
+        <% } else if (signData.month) { %>
+            <p>Month: <%= signData.month %><p>
+        <% } else { %>
+            <p>Year: <%= signData.year %><p>
+        <% } %>
+
         <p><%= signData.horoscope %></p>
         <div>
             <% if (user.sign === signData.sunsign) { %>
