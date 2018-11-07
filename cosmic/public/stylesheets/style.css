@@ -59,6 +59,7 @@ h1 {
 h2 {
   font-size: 50px;
   text-transform: capitalize;
+  margin: 0;
 }
 h3 {
   font-size: 30px;
@@ -104,18 +105,45 @@ h3 {
 .show-signs img {
   width: 80px;
 }
+.user-details {
+  margin: 0px 70px 0 30px;
+}
 
 #user-avatar {
   border-radius: 50%;
+  margin-left: 100px;
 }
 #sign-logo {
   width: 120px;
+  margin-top: -100px;
+  margin-left: 250px;
 }
 
 .img-favorite {
   width: 50px;
 }
 
+.profile-prediction {
+  padding-top: 30px;
+}
+
+.profile-prediction p {
+  margin: 0;
+}
+
+.title-today {
+  width: 70px;
+  margin: 0;
+  float: left;
+}
+
+select {
+  width: 200px;
+  height: 40px;
+  background: none;
+  color: white;
+  font-size: 20px;
+}
 @media screen and (min-width: 540px) {
   .main-signs img {
     width: 590px;
