@@ -7,8 +7,11 @@ const rootURL = 'https://horoscope-api.herokuapp.com/horoscope/';
 module.exports = {
 
     signDetails: function(req, res) {
-        request(`${rootURL}today/${req.params.sid}`, function(err, response, body) {
-            res.render('show', {user: req.user, signData: JSON.parse(body)});
+        var dt = new Date();
+        var dtStr = `${dt.getFullYear()}-${dt.getMonth() + 1}-${dt.getDate().toString().padStart(2, '0')}`;
+        var findSign = new RegExp(req.params.sid, 'i');
+        Horoscope.findOne({sign: findSign, date: dtStr}, function(err, horoscope) {
+            res.render('show', {user: req.user, signData: horoscope});
         });
     },
 
@@ -89,8 +92,6 @@ module.exports = {
         req.user.populate('favorites').execPopulate(function(err) {
             if (err) return next(err);
             res.render('favorites', { user: req.user });
-        })
-            
-        
+        }); 
     }
 }
