@@ -1,14 +1,11 @@
 <%- include('./partials/header') %>
 
-
 <section class="prediction">
     <div><img src="/img/<%= signData.sign %>.png"></div>
     <div class="prediction-data">
-
         <h2><%= signData.sign %></h2>
-
         <% if (signData.date) { %>
-            <p>Day: <%= signData.date %></p>
+            <p>Day: <%= signData.date.toDateString() %></p>
         <% } else if (signData.week) { %>
             <p>Week: <%= signData.week %><p>
         <% } else if (signData.month) { %>
@@ -16,10 +13,7 @@
         <% } else { %>
             <p>Year: <%= signData.year %><p>
         <% } %>
-
         <p><%= signData.prediction %></p>
-    
-
         <ul class="sign-period">
             <li><a href="/horoscope/week/<%= signData.sign %>">Weekly</a></li>
             <li><a href="/horoscope/month/<%= signData.sign %>">Monthly</a></li>
@@ -27,7 +21,6 @@
         </ul>
     </div>
 </section>
-
 <section class="show-bottom">
     <div class="show-signs">
             <div><a href="/horoscope/today/aquarius"><img src="/img/aquarius.png" alt="Aquarius"></a></div>
@@ -44,6 +37,7 @@
             <div><a href="/horoscope/today/capricorn"><img src="/img/capricorn.png" alt="Capricorn"></a></div>
     </div>
     <div>
+        <% if (signData.comments) {%>
         <h3>Add a comment to this Horoscope</h3>
         <form method="POST" action="/horoscope/<%= signData.date %>/<%= signData.sign %>/comments">
             <input type="text" name="content" placeholder="Enter a comment">
@@ -52,15 +46,10 @@
             <input type="submit" value="Add Comment">
         </form>
         <h3>Comments:</h3>
-        <% signData.comments.forEach(function(comment) { %>
-            <p><%= comment.content %></p>
-            
-        <% }); %>
-        
+            <% signData.comments.forEach(function(comment) { %>
+                <p><%= comment.content %></p>
+            <% }); %>
+        <% } %>
     </div>    
-    
 </section>
-    
     <%- include('./partials/footer') %>
-    
-    
