@@ -12,6 +12,9 @@ router.get('/', function(req, res) {
 
 
 router.get('/horoscope/today/:sid', controller.signDetails);
+router.get('/horoscope/week/:sid', controller.signWeekDetails);
+router.get('/horoscope/month/:sid', controller.signMonthDetails);
+router.get('/horoscope/year/:sid', controller.signYearDetails);
 router.get('/profile', controller.userPage);
 router.post('/profile', controller.addSign);
 router.get('/favorites/:date', controller.addFavorite);
