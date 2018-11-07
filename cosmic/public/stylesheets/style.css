@@ -112,6 +112,10 @@ h3 {
   width: 120px;
 }
 
+.img-favorite {
+  width: 50px;
+}
+
 @media screen and (min-width: 540px) {
   .main-signs img {
     width: 590px;

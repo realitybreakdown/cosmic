@@ -17,8 +17,8 @@ module.exports = {
             if (err) return next(err);
             var signData = JSON.parse(body);
             Horoscope.findOne({date: signData.date, sign: req.user.sign}, function(err, horoscope) {
-                var favorited = req.user.favorites.some(f => f._id.equals(horoscope._id));
-                res.render('profile', {user: req.user, signData, favorited});
+                if(horoscope) var favorited = req.user.favorites.some(f => f._id.equals(horoscope._id));
+                res.render('profile', {user: req.user, signData, favorited, horoscope});
             });
         });
     },
@@ -32,6 +32,7 @@ module.exports = {
 
     addFavorite: function(req, res) {
         Horoscope.findOne({date: req.params.date, sign: req.user.sign}, function(err, horoscope) {
+            if(!horoscope) return console.log('Not Found')
             if (req.user.favorites.some(f => f._id.equals(horoscope._id))) {
                 res.redirect('/profile');
             } else {
@@ -42,6 +43,14 @@ module.exports = {
             }
         });
     },
+
+    removeFavorite: function(req, res, next) {
+        req.user.favorites = req.user.favorites.filter(fav => fav._id != req.params.hid)
+        req.user.save(function(){
+            res.redirect('/profile');
+        });
+    },
+
 
     addComment: function(req, res, next) {
         var findSign = new RegExp(req.params.sunsign, 'i');

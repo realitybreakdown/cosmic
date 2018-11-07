@@ -32,14 +32,14 @@
           <input type="submit" value="Add Sign">
         </form>
         <h3>Today</h3>
-        <p><%= signData.horoscope %></p>
         <% if (favorited) { %>
-          <img src="/img/star_favorite_on.png">
+          <a href="/favorites/<%= horoscope._id %>/delete/"><img src="/img/star_favorite_on.png" class="img-favorite"></a>
         <% } else { %>
           <form method="POST" action="/favorites/<%= signData.date %>">
-            <input type="submit" value="addfavorite" id="like"><img src="/img/star_favorite.png">
+            <input type="submit" value="addfavorite" id="like"><img src="/img/star_favorite.png" class="img-favorite">
           </form>
         <% } %>
+        <p><%= signData.horoscope %></p>
     </div>
   </section>
   <section>
