@@ -34,9 +34,9 @@
         <div class="profile-prediction">
           <h3 class="title-today">Today</h3>
           <% if (favorited) { %>
-            <a href="/favorites/<%= horoscope._id %>/delete/"><img src="/img/star_favorite_on.png" class="img-favorite"></a>
+            <a href="/favorites/<%= horoscope._id %>/delete/"><img src="/img/star_favorite_on.png" class="img-favorite">Favorited</a>
           <% } else { %>
-            <a href="/favorites/<%= signData.date %>"><img src="/img/star_favorite.png" class="img-favorite"></a>
+            <a href="/favorites/<%= signData.date %>"><img src="/img/star_favorite.png" class="img-favorite">Favorite</a>
           <% } %>
           <p><%= signData.horoscope %></p>
         </div>
