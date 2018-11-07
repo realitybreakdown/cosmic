@@ -10,7 +10,7 @@
         <% } %>
           <img src="/img/<%= user.sign %>.png" id="sign-logo">
     </div>
-    <div>
+    <div class="user-details">
         <h2><%= user.name %></h2>
         <p>Member Since: <%= user.createdAt %></p>
         <p>Accuracy: <%= user.accuracy %></p>
@@ -31,15 +31,15 @@
           </select>
           <input type="submit" value="Add Sign">
         </form>
-        <h3>Today</h3>
-        <% if (favorited) { %>
-          <a href="/favorites/<%= horoscope._id %>/delete/"><img src="/img/star_favorite_on.png" class="img-favorite"></a>
-        <% } else { %>
-          <form method="POST" action="/favorites/<%= signData.date %>">
-            <input type="submit" value="addfavorite" id="like"><img src="/img/star_favorite.png" class="img-favorite">
-          </form>
-        <% } %>
-        <p><%= signData.horoscope %></p>
+        <div class="profile-prediction">
+          <h3 class="title-today">Today</h3>
+          <% if (favorited) { %>
+            <a href="/favorites/<%= horoscope._id %>/delete/"><img src="/img/star_favorite_on.png" class="img-favorite"></a>
+          <% } else { %>
+            <a href="/favorites/<%= signData.date %>"><img src="/img/star_favorite.png" class="img-favorite"></a>
+          <% } %>
+          <p><%= signData.horoscope %></p>
+        </div>
     </div>
   </section>
   <section>
