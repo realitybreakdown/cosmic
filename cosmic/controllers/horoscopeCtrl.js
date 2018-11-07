@@ -30,7 +30,7 @@ module.exports = {
         });
     },
 
-    addFavorite: function(req, res, next) {
+    addFavorite: function(req, res) {
         Horoscope.findOne({date: req.params.date, sign: req.user.sign}, function(err, horoscope) {
             if(!horoscope) return console.log('Not Found')
             if (req.user.favorites.some(f => f._id.equals(horoscope._id))) {
@@ -43,14 +43,27 @@ module.exports = {
             }
         });
     },
+
     removeFavorite: function(req, res, next) {
         req.user.favorites = req.user.favorites.filter(fav => fav._id != req.params.hid)
         req.user.save(function(){
             res.redirect('/profile');
+        });
+    },
+
+
+    addComment: function(req, res, next) {
+        var findSign = new RegExp(req.params.sunsign, 'i');
+        Horoscope.findOne({date: req.params.date, sign: findSign}, function(err, horoscope) {
+            if (err) return next(err);
+            var newComment = {
+                content: req.body.content
+            };
+            console.log(newComment);
+            horoscope.comments.push(newComment);
+            horoscope.save(function(err){
+                res.redirect(`/horoscope/today/${req.params.sunsign}`);                
+            });
         })
-        // Horoscope.findByIdAndRemove(req.params.hid, function(err) {
-        //     if (err) return next(err);
-        //     res.redirect('/profile');
-        // });
     },
 }
