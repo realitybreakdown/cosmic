@@ -4,7 +4,7 @@ body {
   font-family: 'Jim Nightshade', cursive;
   background-size: cover;
   background-attachment: fixed;
-  background-image: url("https://i.imgur.com/QQEiYIt.gif");
+  background-image: url("https://i.imgur.com/BnWBcNj.gif");
   color: white;
   height: 50px;
 }
@@ -80,10 +80,15 @@ h4 {
   width: 360px;
 }
 
-.signs, .show-signs, .select-signs {
+.signs, .show-signs {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.select-signs {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .show-signs {
@@ -104,8 +109,13 @@ h4 {
   transition: transform .2s;
 }
 
+.unselected-sign {
+  opacity: 0.3;
+}
+
 .select-signs div {
   width: 60px;
+  text-align: center;
 }
 
 .signs img {
@@ -182,8 +192,12 @@ select {
   border-bottom: 1px white solid;
 }
 
-.show-bottom {
+.show-bottom, .profile-today, .btn-accuracy {
   display: flex;
+}
+
+.btn-accuracy {
+  padding-top: 20px;
 }
 
 .prediction-data {
@@ -204,11 +218,10 @@ select {
 
 .left-col p, .btn-favorites {
   background-color:#0000007a;
+  line-height: 80px;
 }
 
-.btn-favorites {
-  padding: 14px;
-}
+
 
 .user-name{
   display: flex;
@@ -224,8 +237,6 @@ select {
   display: inline;
   position: absolute;
   bottom: 0px;
-  text-align: center;
-  width: 100%;
 }
 
 .element-icon img {

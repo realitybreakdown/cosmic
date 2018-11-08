@@ -10,7 +10,7 @@
       <% } %>
       <img src="/img/<%= user.sign %>.png" id="sign-logo">
       <% if (!user.accuracy.length) {%>
-      <p>Rate your horoscope to track your prediction accuracy.</p>
+      <p>Rate your horoscope</p>
       <% } else { %>
       <p>Accuracy: <span><%= accuracyRating %>%</span></p>
       <% } %>
@@ -22,10 +22,7 @@
       <h4>Member Since: <%= user.createdAt.toDateString() %></h4>
     </div>
     <% if (user.sign) { %>
-      <h3><a href="/horoscope/today/<%= user.sign %>" class="user-sign"><%= user.sign %></a></h3>
-    <% } else { %>
-      <!-- a tags for the images that will render an astrological identity -->
-      <!-- simple transforms for the scalability -->
+      <h3><%= user.sign %></h3>
     <% } %>
     <div class="select-signs">
       <div id="Aquarius"><img src="/img/aquarius.png" alt="Aquarius">Aquarius</div>
@@ -43,27 +40,27 @@
     </div>
     <form method="POST" action="/profile">
       <input type="hidden" name="sign">
-      <input type="submit" value="Select Sign">
+      <input type="submit" value="Save Sign">
     </form>
     <div class="profile-prediction">
-      <h3 class="title-today">Today</h3>
-
-
-      
-      
-      <% if (favorited) { %>
-        <a href="/favorites/<%= horoscope._id %>/delete/" class="img-favorite"><img src="/img/star_favorite_on.png"></a>
-      <% } else { %>
-        <a href="/favorites/<%= signData.date %>" class="img-favorite"><img src="/img/star_favorite.png"></a>
-      <% } %>
+      <div class="profile-today">
+        <h3 class="title-today">Today</h3>
+        <% if (favorited) { %>
+          <a href="/favorites/<%= horoscope._id %>/delete/" class="img-favorite"><img src="/img/star_favorite_on.png"></a>
+        <% } else { %>
+          <a href="/favorites/<%= signData.date %>" class="img-favorite"><img src="/img/star_favorite.png"></a>
+        <% } %>
+      </div>
 
       <p><%= signData.horoscope %></p>
-      <% if (accuracyDoc) { %>
-        <form action="/accuracy/<%= accuracyDoc._id %>?_method=PUT" method="POST"><button type="submit">Undo Rating</button></form>
-      <% } else { %>
-        <form action="/accuracy/<%= signData.date %>/T?_method=PUT" method="POST"><button type="submit"> &#128077; </button></form>
-        <form action="/accuracy/<%= signData.date %>/F?_method=PUT" method="POST"><button type="submit">	&#128078; </button></form>
-      <% } %>
+      <div class="btn-accuracy">
+          <% if (accuracyDoc) { %>
+            <form action="/accuracy/<%= accuracyDoc._id %>?_method=PUT" method="POST"><button type="submit">Undo Rating</button></form>
+          <% } else { %>
+            <form action="/accuracy/<%= signData.date %>/T?_method=PUT" method="POST"><button type="submit"> &#128077; </button></form>
+            <form action="/accuracy/<%= signData.date %>/F?_method=PUT" method="POST"><button type="submit">	&#128078; </button></form>
+          <% } %>
+      </div>
           
           <ul class="sign-period">
             <li><a href="/horoscope/week/<%= signData.sunsign %>">Weekly</a></li>
@@ -75,9 +72,12 @@
     </section>
     
     <script>
+      var signs = document.querySelectorAll('.select-signs div');
       document.querySelector('.select-signs').addEventListener('click', function(evt) {
         if (!evt.target.tagName === 'IMG');
+        signs.forEach( div => div.classList.add('unselected-sign') );
         var sign = evt.target.parentElement.id;
+        evt.target.parentElement.classList.remove('unselected-sign');
         document.querySelector("input[name='sign']").value = sign;
       })
       
