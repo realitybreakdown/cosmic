@@ -10,7 +10,6 @@ router.get('/', function(req, res) {
   res.render('index', { user: req.user });
 });
 
-
 router.get('/horoscope/today/:sid', controller.signDetails);
 router.get('/horoscope/week/:sid', controller.signWeekDetails);
 router.get('/horoscope/month/:sid', controller.signMonthDetails);
@@ -20,10 +19,7 @@ router.post('/profile', controller.addSign);
 router.get('/favorites', controller.favorites);
 router.get('/favorites/:date', controller.addFavorite);
 router.get('/favorites/:hid/delete', controller.removeFavorite);
-
 router.post('/horoscope/:date/:sunsign/comments', controller.addComment);
-
-
 
 router.get('/auth/google', passport.authenticate(
   'google',
