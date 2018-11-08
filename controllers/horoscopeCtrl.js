@@ -7,8 +7,7 @@ const rootURL = 'https://horoscope-api.herokuapp.com/horoscope/';
 module.exports = {
 
     signDetails: function(req, res) {
-        var dt = new Date();
-        var dtStr = `${dt.getFullYear()}-${dt.getMonth() + 1}-${dt.getUTCDate().toString().padStart(2, '0')}`;
+        var dtStr = new Date().toISOString();
         var findSign = new RegExp(req.params.sid, 'i');
         Horoscope.findOne({sign: findSign, date: dtStr}, function(err, horoscope) {
             res.render('show', {user: req.user, signData: horoscope});
