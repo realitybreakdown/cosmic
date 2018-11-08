@@ -37,20 +37,22 @@
             <div><a href="/horoscope/today/sagittarius"><img src="/img/sagittarius.png" alt="Sagittarius"></a></div>
             <div><a href="/horoscope/today/capricorn"><img src="/img/capricorn.png" alt="Capricorn"></a></div>
     </div>
-    <% if (signData.comments) { %>
-        <div>
-            <h3>Add a comment to this Horoscope</h3>
-            <form method="POST" action="/horoscope/<%= signData.date %>/<%= signData.sign %>/comments">
-                <input type="text" name="content" placeholder="Enter a comment">
-                <br>
-                <br>
-                <input type="submit" value="Add Comment">
-            </form>
-            <h3>Comments:</h3>
-            <% signData.comments.forEach(function(comment) { %>
-                <p><%= comment.content %></p>
-            <% }); %>
-        </div>
+    <% if (user) { %>
+        <% if (signData.comments) { %>
+            <div>
+                <h3>Add a comment to this Horoscope</h3>
+                <form method="POST" action="/horoscope/<%= signData.date %>/<%= signData.sign %>/comments">
+                    <input type="text" name="content" placeholder="Enter a comment">
+                    <br>
+                    <br>
+                    <input type="submit" value="Add Comment">
+                </form>
+                <h3>Comments:</h3>
+                <% signData.comments.forEach(function(comment) { %>
+                    <p><%= comment.content %></p>
+                <% }); %>
+            </div>
+        <% } %>
     <% } %>
 </section>
     <%- include('./partials/footer') %>
