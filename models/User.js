@@ -28,7 +28,7 @@ var userSchema = new Schema ({
     avatar: String,
     comments: [commentSchema],
     favorites: [{type: Schema.Types.ObjectId, ref: 'Horoscope'}],
-    prediction: [accuracySchema]
+    accuracy: [accuracySchema]
 }, {
     timestamps: true
 });
