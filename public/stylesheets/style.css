@@ -31,6 +31,7 @@ a:hover {
   list-style: none;
   margin: 0;
   padding: 0;
+  height: 80px;
 }
 
 .main-nav li:first-child {
@@ -195,11 +196,27 @@ select {
   align-items: center;
   justify-content: space-between;
 }
+
 .user-details h3 {
   margin: 0;
+}
+
+.element-icon {
+  display: inline;
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  width: 100%;
+}
+
+.element-icon img {
+  width: 100px;
 }
 @media screen and (min-width: 540px) {
   .main-signs img {
     width: 590px;
+  }
+  .element-icon img {
+    width: 100px;
   }
 }
