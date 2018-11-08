@@ -10,8 +10,7 @@ async function getHoroscopes() {
     for(var i = 0; i < signs.length; i++) {
         var h = await request(`${rootURL}today/${signs[i]}`);
         h = JSON.parse(h);
-        var dt = new Date(h.date);
-        dt = `${dt.getUTCFullYear()}-${dt.getUTCMonth() + 1}-${dt.getUTCDate()}`; 
+        var dt = new Date(h.date).toISOString();
         if (i === 0) {
             var prediction = await Horoscope.findOne({ date: dt });
             if (prediction) break;
