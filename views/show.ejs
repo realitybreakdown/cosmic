@@ -14,7 +14,6 @@
             <p>Year: <%= signData.year %><p>
         <% } %>
         <p><%= signData.prediction %></p>
-    
         <ul class="sign-period">
             <li><a href="/horoscope/week/<%= signData.sign %>">Weekly</a></li>
             <li><a href="/horoscope/month/<%= signData.sign %>">Monthly</a></li>
@@ -23,6 +22,7 @@
     </div>
 </section>
 <section class="show-bottom">
+    <!-- simple transforms for the scalability -->
     <div class="show-signs">
             <div><a href="/horoscope/today/aquarius"><img src="/img/aquarius.png" alt="Aquarius"></a></div>
             <div><a href="/horoscope/today/pisces"><img src="/img/pisces.png" alt="Pisces"></a></div>
@@ -37,22 +37,20 @@
             <div><a href="/horoscope/today/sagittarius"><img src="/img/sagittarius.png" alt="Sagittarius"></a></div>
             <div><a href="/horoscope/today/capricorn"><img src="/img/capricorn.png" alt="Capricorn"></a></div>
     </div>
-    <% if (user) { %>
-        <% if (signData.comments) { %>
-            <div>
-                <h3>Add a comment to this Horoscope</h3>
-                <form method="POST" action="/horoscope/<%= signData.date %>/<%= signData.sign %>/comments">
-                    <input type="text" name="content" placeholder="Enter a comment">
-                    <br>
-                    <br>
-                    <input type="submit" value="Add Comment">
-                </form>
-                <h3>Comments:</h3>
-                <% signData.comments.forEach(function(comment) { %>
-                    <p><%= comment.content %></p>
-                <% }); %>
-            </div>
-        <% } %>
+    <% if (signData.comments) { %>
+        <div>
+            <h3>Add a comment to this Horoscope</h3>
+            <form method="POST" action="/horoscope/<%= signData.date %>/<%= signData.sign %>/comments">
+                <input type="text" name="content" placeholder="Enter a comment">
+                <br>
+                <br>
+                <input type="submit" value="Add Comment">
+            </form>
+            <h3>Comments:</h3>
+            <% signData.comments.forEach(function(comment) { %>
+                <p><%= comment.content %></p>
+            <% }); %>
+        </div>
     <% } %>
 </section>
     <%- include('./partials/footer') %>
