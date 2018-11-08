@@ -80,7 +80,7 @@ h4 {
   width: 360px;
 }
 
-.signs, .show-signs {
+.signs, .show-signs, .select-signs {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -88,6 +88,24 @@ h4 {
 
 .show-signs {
   width: 40%;
+}
+
+.show-signs img {
+  width: 80px;
+  transition: transform .2s;
+}
+
+.show-signs img:hover, .select-signs img:hover {
+  transform: scale(1.5);
+}
+
+.select-signs img {
+  width: 45px;
+  transition: transform .2s;
+}
+
+.select-signs div {
+  width: 60px;
 }
 
 .signs img {
@@ -109,6 +127,7 @@ h4 {
 .prediction {
   display: inline-flex;
 }
+
 .prediction img {
   padding-top: -80px;
 }
@@ -118,9 +137,6 @@ h4 {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.show-signs img {
-  width: 80px;
-}
 .user-details {
   margin: 0px 70px;
 }
@@ -138,6 +154,7 @@ h4 {
 .img-favorite {
   float: right
 }
+
 .img-favorite img {
   width: 50px;
 }
@@ -173,6 +190,7 @@ select {
   padding-top: 30px;
   padding-right: 100px;
 }
+
 .left-col {
   width: 512px;
   text-align: center;   
@@ -187,6 +205,7 @@ select {
 .left-col p, .btn-favorites {
   background-color:#0000007a;
 }
+
 .btn-favorites {
   padding: 14px;
 }
@@ -212,10 +231,12 @@ select {
 .element-icon img {
   width: 100px;
 }
+
 @media screen and (min-width: 540px) {
   .main-signs img {
     width: 590px;
   }
+  a
   .element-icon img {
     width: 100px;
   }
