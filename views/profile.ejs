@@ -9,7 +9,11 @@
         <img src="https://i.imgur.com/nYZjvKS.png">
       <% } %>
       <img src="/img/<%= user.sign %>.png" id="sign-logo">
-      <p>Accuracy: <%= user.accuracy %><span>97%</span></p>
+      <% if (!user.accuracy.length) {%>
+      <p>Rate your horoscope to track your prediction accuracy.</p>
+      <% } else { %>
+      <p>Accuracy: <span><%= accuracyRating %>%</span></p>
+      <% } %>
       <h3 class="btn-favorites"><a href="/favorites">Favorites</a></h3>
   </div>
   <div class="user-details">
@@ -41,33 +45,42 @@
       <input type="hidden" name="sign">
       <input type="submit" value="Select Sign">
     </form>
-
     <div class="profile-prediction">
       <h3 class="title-today">Today</h3>
 
+
+      
+      
       <% if (favorited) { %>
         <a href="/favorites/<%= horoscope._id %>/delete/" class="img-favorite"><img src="/img/star_favorite_on.png"></a>
       <% } else { %>
         <a href="/favorites/<%= signData.date %>" class="img-favorite"><img src="/img/star_favorite.png"></a>
       <% } %>
+
       <p><%= signData.horoscope %></p>
-
-      <ul class="sign-period">
-          <li><a href="/horoscope/week/<%= signData.sunsign %>">Weekly</a></li>
-          <li><a href="/horoscope/month/<%= signData.sunsign %>">Monthly</a></li>
-          <li><a href="/horoscope/year/<%= signData.sunsign %>">Yearly</a></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<script>
-document.querySelector('.select-signs').addEventListener('click', function(evt) {
-  if (!evt.target.tagName === 'IMG');
-  var sign = evt.target.parentElement.id;
-  document.querySelector("input[name='sign']").value = sign;
-})
-
-</script>
+      <% if (accuracyDoc) { %>
+        <form action="/accuracy/<%= accuracyDoc._id %>?_method=PUT" method="POST"><button type="submit">Undo Rating</button></form>
+      <% } else { %>
+        <form action="/accuracy/<%= signData.date %>/T?_method=PUT" method="POST"><button type="submit"> &#128077; </button></form>
+        <form action="/accuracy/<%= signData.date %>/F?_method=PUT" method="POST"><button type="submit">	&#128078; </button></form>
+      <% } %>
+          
+          <ul class="sign-period">
+            <li><a href="/horoscope/week/<%= signData.sunsign %>">Weekly</a></li>
+            <li><a href="/horoscope/month/<%= signData.sunsign %>">Monthly</a></li>
+            <li><a href="/horoscope/year/<%= signData.sunsign %>">Yearly</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <script>
+      document.querySelector('.select-signs').addEventListener('click', function(evt) {
+        if (!evt.target.tagName === 'IMG');
+        var sign = evt.target.parentElement.id;
+        document.querySelector("input[name='sign']").value = sign;
+      })
+      
+      </script>
 
 <%- include('./partials/footer') %>
