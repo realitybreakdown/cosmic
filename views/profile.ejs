@@ -20,6 +20,8 @@
     <% if (user.sign) { %>
       <h3><a href="/horoscope/today/<%= user.sign %>" class="user-sign"><%= user.sign %></a></h3>
     <% } else { %>
+      <!-- a tags for the images that will render an astrological identity -->
+      <!-- simple transforms for the scalability -->
       <form method="POST" action="/profile">
         <select name="sign">
           <option value="Capricorn" <%= user.sign === 'Capricorn' ? 'selected' : '' %>>Capricorn</option>
@@ -35,6 +37,7 @@
           <option value="Scorpio" <%= user.sign === 'Scorpio' ? 'selected' : '' %>>Scorpio</option>
           <option value="Sagittarius" <%= user.sign === 'Sagittarius' ? 'selected' : '' %>>Sagittarius</option>
         </select>
+        <!-- Jim said this button is ugly af -->
         <input type="submit" value="Add Sign">
       </form>
     <% } %>

@@ -8,7 +8,7 @@ module.exports = {
 
     signDetails: function(req, res) {
         var dt = new Date();
-        var dtStr = `${dt.getFullYear()}-${dt.getMonth() + 1}-${dt.getDate().toString().padStart(2, '0')}`;
+        var dtStr = `${dt.getFullYear()}-${dt.getMonth() + 1}-${dt.getUTCDate().toString().padStart(2, '0')}`;
         var findSign = new RegExp(req.params.sid, 'i');
         Horoscope.findOne({sign: findSign, date: dtStr}, function(err, horoscope) {
             res.render('show', {user: req.user, signData: horoscope});
@@ -42,6 +42,7 @@ module.exports = {
         });
     },
 
+    // Refactor the code to take advantage of the db - don't want the API being hit, grab the day from above.
     userPage: function(req, res, next) {
         request(`${rootURL}today/${req.user.sign}`, function(err, response, body) {
             if (err) return next(err);
@@ -89,7 +90,6 @@ module.exports = {
             var newComment = {
                 content: req.body.content
             };
-            console.log(newComment);
             horoscope.comments.push(newComment);
             horoscope.save(function(err){
                 res.redirect(`/horoscope/today/${req.params.sunsign}`);                
