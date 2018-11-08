@@ -85,10 +85,10 @@ module.exports = {
     setAccuracy: function(req, res) {
         Horoscope.findOne({date: req.params.date, sign: req.user.sign}, function(err, horoscope) {
             if (!horoscope) return console.log('Not Found')
-            if (req.user.accuracy.some(f => f._id.equals({predictions: horoscope._id}))) { // took out the accuracy in an object jic - because if there is a true we dont still want to add true
+            if (req.user.accuracy.some(f => f._id.equals({predictions: horoscope._id}))) { 
                 res.redirect('/profile');
             } else {
-                req.user.accuracy.push({predictions: horoscope._id, accuracy: req.params.tf === 'T' ? true : false}); // horoscope._id previously, but I want it to push true not the h._id 
+                req.user.accuracy.push({predictions: horoscope._id, accuracy: req.params.tf === 'T' ? true : false});  
                 req.user.save(function() {
                     res.redirect('/profile');
                 });
