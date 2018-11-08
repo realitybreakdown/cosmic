@@ -31,6 +31,7 @@ a:hover {
   list-style: none;
   margin: 0;
   padding: 0;
+  height: 80px;
 }
 
 .main-nav li:first-child {
@@ -61,21 +62,30 @@ h2 {
   text-transform: capitalize;
   margin: 0;
 }
+
 h3 {
   font-size: 30px;
+}
+
+h4 {
+  margin: 0;
+  font-size: 18px;
 }
 
 .main-signs div {
   text-align: center;
 }
+
 .main-signs img {
   width: 360px;
 }
+
 .signs, .show-signs {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .show-signs {
   width: 40%;
 }
@@ -112,20 +122,23 @@ h3 {
   width: 80px;
 }
 .user-details {
-  margin: 0px 70px 0 30px;
+  margin: 0px 70px;
 }
 
 #user-avatar {
   border-radius: 50%;
-  margin-left: 100px;
 }
+
 #sign-logo {
   width: 120px;
   margin-top: -100px;
-  margin-left: 250px;
+  margin-left: 200px;
 }
 
 .img-favorite {
+  float: right
+}
+.img-favorite img {
   width: 50px;
 }
 
@@ -140,7 +153,6 @@ h3 {
 .title-today {
   width: 70px;
   margin: 0;
-  float: left;
 }
 
 select {
@@ -161,9 +173,50 @@ select {
   padding-top: 30px;
   padding-right: 100px;
 }
+.left-col {
+  width: 512px;
+  text-align: center;   
+  padding-left: 60px;
+}
 
+.left-col span {
+  font-size: 50px;
+  font-family: 'Jim Nightshade', cursive;
+}
+
+.left-col p, .btn-favorites {
+  background-color:#0000007a;
+}
+.btn-favorites {
+  padding: 14px;
+}
+
+.user-name{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-details h3 {
+  margin: 0;
+}
+
+.element-icon {
+  display: inline;
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  width: 100%;
+}
+
+.element-icon img {
+  width: 100px;
+}
 @media screen and (min-width: 540px) {
   .main-signs img {
     width: 590px;
+  }
+  .element-icon img {
+    width: 100px;
   }
 }

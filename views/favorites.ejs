@@ -1,13 +1,29 @@
 <%- include('./partials/header') %>
-<section>
-  <h3>Horoscope Favorites</h3>
-  <h5>The predictions you can't get enough of.</h5>
-  <div>
-    <% user.favorites.forEach(function(favorite) {  %>
-        <p> <%= favorite.prediction %> </p>
-    <% }); %>
-  </div>
 
-</section>  
+<section class="prediction">
+  <div class="left-col">
+      <% if (user.avatar) { %>
+        <img src="<%= user.avatar %>&sz=250" id="user-avatar">&nbsp;&nbsp;
+      <% } else { %>
+        <img src="https://i.imgur.com/nYZjvKS.png">
+      <% } %>
+      <img src="/img/<%= user.sign %>.png" id="sign-logo">
+      <p>Accuracy: <%= user.accuracy %><span>97%</span></p>
+      <h3 class="btn-favorites"><a href="/profile">Profile</a></h3>
+  </div>
+  <div class="user-details">
+    <div class="user-name">
+      <h2><%= user.name %></h2>
+      <h4>Member Since: <%= user.createdAt.toDateString() %></h4>
+    </div>
+    <h3>Favorite Horoscopes</h3>
+      <% user.favorites.forEach(function(favorite) {  %>
+        <p> <%= favorite.date.toDateString() %> </p>
+        <p> <%= favorite.prediction %> </p>
+      <% }); %>
+  </div>
+  </section>
+
+
 
 <%- include('./partials/footer') %>
