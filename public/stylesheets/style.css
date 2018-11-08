@@ -232,6 +232,38 @@ select {
   width: 100px;
 }
 
+.sign-up {
+  font-size: 20px;
+  text-decoration: none;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080, 0 0 55px #ff0080, 0 0 75px #ff0080;
+}
+
+.sign-up:hover {
+  color: white;
+  text-shadow: none;
+}
+
+.signup {
+  background-color: white;
+    border: none;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-left: 8px;
+    text-transform: uppercase;
+}
+
+.signup:hover {
+  color: #ff0080;
+  border-radius: 6px;
+  transition: all 0.3s ease 0s;
+}
+
 @media screen and (min-width: 540px) {
   .main-signs img {
     width: 590px;

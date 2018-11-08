@@ -14,13 +14,16 @@
             <p>Year: <%= signData.year %><p>
         <% } %>
         <p><%= signData.prediction %></p>
-
-        <button onclick="alertFunction()">🔔</button>
+        <% if (user) { %>
         <ul class="sign-period">
             <li><a href="/horoscope/week/<%= signData.sign %>">Weekly</a></li>
             <li><a href="/horoscope/month/<%= signData.sign %>">Monthly</a></li>
             <li><a href="/horoscope/year/<%= signData.sign %>">Yearly</a></li>
         </ul>
+        <% } %>
+        <% if (!user) { %>
+        <a class = "sign-up" href="/auth/google">To see more, please <button class="signup">Sign up</button></a>
+        <% } %>
     </div>
 </section>
 <section class="show-bottom">
