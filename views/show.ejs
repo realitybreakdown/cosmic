@@ -14,6 +14,8 @@
             <p>Year: <%= signData.year %><p>
         <% } %>
         <p><%= signData.prediction %></p>
+
+        <button onclick="alertFunction()">🔔</button>
         <ul class="sign-period">
             <li><a href="/horoscope/week/<%= signData.sign %>">Weekly</a></li>
             <li><a href="/horoscope/month/<%= signData.sign %>">Monthly</a></li>
