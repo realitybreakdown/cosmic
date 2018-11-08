@@ -22,33 +22,36 @@
     <% } else { %>
       <!-- a tags for the images that will render an astrological identity -->
       <!-- simple transforms for the scalability -->
-      <form method="POST" action="/profile">
-        <select name="sign">
-          <option value="Capricorn" <%= user.sign === 'Capricorn' ? 'selected' : '' %>>Capricorn</option>
-          <option value="Aquarius" <%= user.sign === 'Aquarius' ? 'selected' : '' %>>Aquarius</option>
-          <option value="Pisces" <%= user.sign === 'Pisces' ? 'selected' : '' %>>Pisces</option>
-          <option value="Aries" <%= user.sign === 'Aries' ? 'selected' : '' %>>Aries</option>
-          <option value="Taurus" <%= user.sign === 'Taurus' ? 'selected' : '' %>>Taurus</option>
-          <option value="Gemini" <%= user.sign === 'Gemini' ? 'selected' : '' %>>Gemini</option>
-          <option value="Cancer" <%= user.sign === 'Cancer' ? 'selected' : '' %>>Cancer</option>
-          <option value="Leo" <%= user.sign === 'Leo' ? 'selected' : '' %>>Leo</option>
-          <option value="Virgo" <%= user.sign === 'Virgo' ? 'selected' : '' %>>Virgo</option>
-          <option value="Libra" <%= user.sign === 'Libra' ? 'selected' : '' %>>Libra</option>
-          <option value="Scorpio" <%= user.sign === 'Scorpio' ? 'selected' : '' %>>Scorpio</option>
-          <option value="Sagittarius" <%= user.sign === 'Sagittarius' ? 'selected' : '' %>>Sagittarius</option>
-        </select>
-        <!-- Jim said this button is ugly af -->
-        <input type="submit" value="Add Sign">
-      </form>
     <% } %>
+    <div class="select-signs">
+      <div id="Aquarius"><img src="/img/aquarius.png" alt="Aquarius">Aquarius</div>
+      <div id="Pisces"><img src="/img/pisces.png" alt="Pisces">Pisces</div>
+      <div id="Aries"><img src="/img/aries.png" alt="Aries">Aries</div>
+      <div id="Taurus"><img src="/img/taurus.png" alt="Taurus">Taurus</div>
+      <div id="Gemini"><img src="/img/gemini.png" alt="Gemini">Gemini</div>
+      <div id="Cancer"><img src="/img/cancer.png" alt="Cancer">Cancer</div>
+      <div id="Leo"><img src="/img/leo.png" alt="Leo">Leo</div>
+      <div id="Virgo"><img src="/img/virgo.png" alt="Virgo">Virgo</div>
+      <div id="Libra"><img src="/img/libra.png" alt="Libra">Libra</div>
+      <div id="Scorpio"><img src="/img/scorpio.png" alt="Scorpio">Scorpio</div>
+      <div id="Sagittarius"><img src="/img/sagittarius.png" alt="Sagittarius">Sagittarius</div>
+      <div id="Capricorn"><img src="/img/capricorn.png" alt="Capricorn">Capricorn</div>
+    </div>
+    <form method="POST" action="/profile">
+      <input type="hidden" name="sign">
+      <input type="submit" value="Select Sign">
+    </form>
+
     <div class="profile-prediction">
       <h3 class="title-today">Today</h3>
-      <p><%= signData.horoscope %></p>
+
       <% if (favorited) { %>
         <a href="/favorites/<%= horoscope._id %>/delete/" class="img-favorite"><img src="/img/star_favorite_on.png"></a>
       <% } else { %>
         <a href="/favorites/<%= signData.date %>" class="img-favorite"><img src="/img/star_favorite.png"></a>
       <% } %>
+      <p><%= signData.horoscope %></p>
+
       <ul class="sign-period">
           <li><a href="/horoscope/week/<%= signData.sunsign %>">Weekly</a></li>
           <li><a href="/horoscope/month/<%= signData.sunsign %>">Monthly</a></li>
@@ -57,3 +60,12 @@
     </div>
   </div>
 </section>
+
+<script>
+document.querySelector('.select-signs').addEventListener('click', function(evt) {
+  if (!evt.target.tagName === 'IMG');
+  var sign = evt.target.parentElement.id;
+  document.querySelector("input[name='sign']").value = sign;
+})
+
+</script>
