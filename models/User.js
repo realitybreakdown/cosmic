@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var signs = require('../config/signs');
 
 var accuracySchema = new Schema ({
-    predictions: [{type: Schema.Types.ObjectId, ref: 'Horoscope'}],
+    prediction: {type: Schema.Types.ObjectId, ref: 'Horoscope'},
     accuracy: {
         type: Boolean,
         default: true

@@ -48,7 +48,9 @@ module.exports = {
             var signData = JSON.parse(body);
             Horoscope.findOne({date: signData.date, sign: req.user.sign}, function(err, horoscope) {
                 if(horoscope) var favorited = req.user.favorites.some(f => f._id.equals(horoscope._id));
-                res.render('profile', {user: req.user, signData, favorited, horoscope});
+                var accuracyDoc = req.user.accuracy.find(a => horoscope._id.equals(a.prediction));
+                var accuracyRating = (req.user.accuracy.reduce( (acc, a) => acc + (a.accuracy ? 1 : 0) , 0) / req.user.accuracy.length * 100).toFixed(1);
+                res.render('profile', {user: req.user, signData, favorited, horoscope, accuracyDoc, accuracyRating});
             });
         });
     },
@@ -84,10 +86,10 @@ module.exports = {
     setAccuracy: function(req, res) {
         Horoscope.findOne({date: req.params.date, sign: req.user.sign}, function(err, horoscope) {
             if (!horoscope) return console.log('Not Found')
-            if (req.user.accuracy.some(f => f._id.equals({predictions: horoscope._id}))) { 
+            if (req.user.accuracy.some(f => horoscope._id.equals(f.prediction))) { 
                 res.redirect('/profile');
             } else {
-                req.user.accuracy.push({predictions: horoscope._id, accuracy: req.params.tf === 'T' ? true : false});  
+                req.user.accuracy.push({prediction: horoscope._id, accuracy: req.params.tf === 'T' ? true : false});  
                 req.user.save(function() {
                     res.redirect('/profile');
                 });
