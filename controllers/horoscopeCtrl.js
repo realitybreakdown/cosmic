@@ -102,5 +102,12 @@ module.exports = {
             if (err) return next(err);
             res.render('favorites', { user: req.user });
         }); 
-    }
+    },
+
+    ensureAuthenticated: function(req, res, next) {
+        if (req.isAuthenticated()) {
+            return next();
+        }
+        res.redirect('/auth/google');
+    },
 }
