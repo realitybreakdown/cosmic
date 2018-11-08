@@ -19,6 +19,8 @@ router.post('/profile', controller.ensureAuthenticated, controller.addSign);
 router.get('/favorites', controller.ensureAuthenticated, controller.favorites);
 router.get('/favorites/:date', controller.ensureAuthenticated, controller.addFavorite);
 router.get('/favorites/:hid/delete', controller.ensureAuthenticated, controller.removeFavorite);
+router.put('/accuracy/:date/:tf', controller.ensureAuthenticated, controller.setAccuracy);
+router.put('/accuracy/:accid', controller.ensureAuthenticated, controller.removeAccuracy);
 router.post('/horoscope/:date/:sunsign/comments', controller.ensureAuthenticated, controller.addComment);
 
 router.get('/auth/google', passport.authenticate(

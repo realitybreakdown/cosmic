@@ -63,7 +63,7 @@ module.exports = {
 
     addFavorite: function(req, res) {
         Horoscope.findOne({date: req.params.date, sign: req.user.sign}, function(err, horoscope) {
-            if(!horoscope) return console.log('Not Found')
+            if (!horoscope) return console.log('Not Found')
             if (req.user.favorites.some(f => f._id.equals(horoscope._id))) {
                 res.redirect('/profile');
             } else {
@@ -74,7 +74,7 @@ module.exports = {
             }
         });
     },
-
+    
     removeFavorite: function(req, res, next) {
         req.user.favorites = req.user.favorites.filter(fav => fav._id != req.params.hid)
         req.user.save(function(){
@@ -82,6 +82,26 @@ module.exports = {
         });
     },
 
+    setAccuracy: function(req, res) {
+        Horoscope.findOne({date: req.params.date, sign: req.user.sign}, function(err, horoscope) {
+            if (!horoscope) return console.log('Not Found')
+            if (req.user.accuracy.some(f => f._id.equals({predictions: horoscope._id}))) { // took out the accuracy in an object jic - because if there is a true we dont still want to add true
+                res.redirect('/profile');
+            } else {
+                req.user.accuracy.push({predictions: horoscope._id, accuracy: req.params.tf === 'T' ? true : false}); // horoscope._id previously, but I want it to push true not the h._id 
+                req.user.save(function() {
+                    res.redirect('/profile');
+                });
+            }
+        });
+    },
+
+    removeAccuracy: function(req, res) {
+        req.user.accuracy.remove(req.params.accid);
+        req.user.save(function(){
+            res.redirect('/profile');
+        });
+    },
 
     addComment: function(req, res, next) {
         var findSign = new RegExp(req.params.sunsign, 'i');
