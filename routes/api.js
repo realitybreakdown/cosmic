@@ -6,6 +6,7 @@ var horoscopeCtrl = require('../controllers/api/horoscopes');
 
 router.get('/horoscopes', horoscopeCtrl.getAllHoroscopes); 
 router.get('/horoscope/:id', horoscopeCtrl.getOneHoroscope); 
+router.get('/horoscope/:date', horoscopeCtrl.getHoroscopeByDate); 
 
 
 module.exports = router;

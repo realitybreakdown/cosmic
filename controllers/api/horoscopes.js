@@ -19,7 +19,7 @@ function getOneHoroscope(req, res, next) {
     });
 }
 function getHoroscopeByDate(req, res, next) {
-    Horoscope.findOne({date: req.params.date}, function(err, horoscope) {
+    Horoscope.find({date: req.params.date}, function(err, horoscope) {
         if (err) return next(err);
         res.status(200).json(horoscope);
     });
