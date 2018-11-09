@@ -19,6 +19,14 @@ A group project built by Dilyara Yussupova, Jacqueline Saplicki, Julia Dibo and 
  * MongoDB
  * Express.js
  * OAuth (Google)
+
+
+ ## API Endpoints
+
+ | HTTP method | Endpoint | CRUD |
+| ------------ |:-------------:| -----:|
+| GET | /horoscopes | getAllHoroscopes |
+| GET | /horoscopes/:id' | getOneHoroscope |
  
  ## Links
  * [Trello](https://trello.com/b/ZS371KkO/project-3)
