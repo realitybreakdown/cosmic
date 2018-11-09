@@ -1,11 +1,12 @@
 # Cosmic 
 
 ## Description
-An app to check horoscope and favorite the ones you like the most. The user can comment and rate the accuracy of the horoscope.
+An app to check horoscope and favorite the ones you like the most.
+The user can comment and rate the accuracy of the horoscope.
 A group project built by Dilyara Yussupova, Jacqueline Saplicki, Julia Dibo and Ryan Archambault.
 
 ## Screenshot
- ![ScreenShot](img/)
+![ScreenShot](public/img/cosmicscreenshot.jpg)
 
 ## Technologies Used
  * HTML
@@ -13,7 +14,7 @@ A group project built by Dilyara Yussupova, Jacqueline Saplicki, Julia Dibo and 
  * Javascript
  * Node.js
  * Heroku
- * APIs
+ * API - [Astrology](http://horoscope-api.herokuapp.com/)
  * Mongoose
  * MongoDB
  * Express.js
