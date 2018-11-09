@@ -29,6 +29,7 @@ A group project built by Dilyara Yussupova, Jacqueline Saplicki, Julia Dibo and 
 | GET | /horoscopes/:id' | getOneHoroscope |
 | GET | /horoscopes/:date' | getHoroscopeByDate |
 
+
  ## Links
  * [Trello](https://trello.com/b/ZS371KkO/project-3)
  * [Pitch Deck](https://docs.google.com/presentation/d/10dXU2MZpfmny6LKK1wQliPGXkqTMdtowTK_K8pgyKeI/edit?usp=sharing)
