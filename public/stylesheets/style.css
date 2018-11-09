@@ -199,6 +199,12 @@ select {
 .btn-accuracy {
   padding-top: 20px;
 }
+.btn-accuracy button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: white;
+}
 
 .prediction-data {
   padding-top: 30px;
@@ -242,6 +248,8 @@ select {
 .element-icon img {
   width: 100px;
 }
+
+
 
 @media screen and (min-width: 540px) {
   .main-signs img {
