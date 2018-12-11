@@ -8,7 +8,11 @@
       <% } else { %>
         <img src="https://i.imgur.com/nYZjvKS.png">
       <% } %>
-      <img src="/img/<%= user.sign %>.png" id="sign-logo">
+      <% if (!user.sign) { %>
+          <img src="/img/star_favorite.png" id="sign-logo">
+      <% } else { %>
+        <img src="/img/<%= user.sign %>.png" id="sign-logo">
+      <% } %>
       <% if (!user.accuracy.length) {%>
       <p>Rate your horoscope</p>
       <% } else { %>
@@ -23,6 +27,8 @@
     </div>
     <% if (user.sign) { %>
       <h3><%= user.sign %></h3>
+      <% } else { %>
+      <h3>Select and save your sign to get started!</h3>
     <% } %>
     <div class="select-signs">
       <div id="Aquarius"><img src="/img/Aquarius.png" alt="Aquarius">Aquarius</div>
@@ -51,7 +57,7 @@
           <a href="/favorites/<%= signData.date %>" class="img-favorite"><img src="/img/star_favorite.png"></a>
         <% } %>
       </div>
-
+      <% if (user.sign) { %>
       <p><%= signData.horoscope %></p>
       <div class="btn-accuracy">
           <% if (accuracyDoc) { %>
@@ -59,14 +65,16 @@
           <% } else { %>
             <form action="/accuracy/<%= signData.date %>/T?_method=PUT" method="POST"><button type="submit"> &#128077; </button></form>
             <form action="/accuracy/<%= signData.date %>/F?_method=PUT" method="POST"><button type="submit">	&#128078; </button></form>
+            <ul class="sign-period">
+              <li><a href="/horoscope/week/<%= signData.sunsign %>">Weekly</a></li>
+              <li><a href="/horoscope/month/<%= signData.sunsign %>">Monthly</a></li>
+              <li><a href="/horoscope/year/<%= signData.sunsign %>">Yearly</a></li>
+            </ul>
           <% } %>
       </div>
-          
-          <ul class="sign-period">
-            <li><a href="/horoscope/week/<%= signData.sunsign %>">Weekly</a></li>
-            <li><a href="/horoscope/month/<%= signData.sunsign %>">Monthly</a></li>
-            <li><a href="/horoscope/year/<%= signData.sunsign %>">Yearly</a></li>
-          </ul>
+      <% } else { %>
+      <p>Your horoscope predictions will be revealed and tracked once you select a sign above! After saving your sign, track the accuracy of your predications and favorite the best readings. Even read your weekly, monthly, and yearly predications.</p>
+      <% } %>
         </div>
       </div>
     </section>
